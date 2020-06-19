@@ -10,7 +10,21 @@ import SearchBooks from "./SearchBooks";
 class BooksApp extends React.Component {
     state = {
         books: [],
-        shelves: []
+        shelves: [],
+        shelvesList: [
+            {
+                shelfID: 'currentlyReading',
+                shelfTitle: 'Currently Reading'
+            },
+            {
+                shelfID: 'wantToRead',
+                shelfTitle: 'Want to Reading'
+            },
+            {
+                shelfID: 'read',
+                shelfTitle: 'Read'
+            }
+        ]
     };
 
     componentDidMount() {
@@ -39,11 +53,11 @@ class BooksApp extends React.Component {
             <div className="app">
                 <Route exact path="/"
                        render={() =>
-                           <Library onBookShelfChange={this.onBookShelfChange} books={this.state.books}/>
+                           <Library shelvesList={this.state.shelvesList} onBookShelfChange={this.onBookShelfChange} books={this.state.books}/>
                        }/>
                 <Route path="/search"
                        render={() =>
-                           <SearchBooks shelves={
+                           <SearchBooks shelvesList={this.state.shelvesList} shelves={
                                this.state.books.reduce((acc, cur) => ({...acc, [cur.id]: cur.shelf}), {})
                            } onBookShelfChange={this.onBookShelfChange}/>
                        }/>

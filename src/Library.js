@@ -6,30 +6,15 @@ import PropTypes from "prop-types";
 
 
 class Library extends Component {
-    shelves = [
-        {
-            shelfID: 'currentlyReading',
-            shelfTitle: 'Currently Reading'
-        },
-        {
-            shelfID: 'wantToRead',
-            shelfTitle: 'Want to Reading'
-        },
-        {
-            shelfID: 'read',
-            shelfTitle: 'Read'
-        }
-    ];
-
     render() {
-        const {books, onBookShelfChange} = this.props;
+        const {books, onBookShelfChange, shelvesList} = this.props;
         return (<div className="list-books">
             <div className="list-books-title">
                 <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
                 <div>
-                    {this.shelves.map(shelf => <BookShelf key={shelf.shelfID} onBookShelfChange={onBookShelfChange}
+                    {shelvesList.map(shelf => <BookShelf shelvesList={shelvesList} key={shelf.shelfID} onBookShelfChange={onBookShelfChange}
                                                           books={books} shelf={shelf}/>)}
                 </div>
             </div>
@@ -42,7 +27,8 @@ class Library extends Component {
 
 Library.propTypes = {
     books: PropTypes.array.isRequired,
-    onBookShelfChange: PropTypes.func.isRequired
+    onBookShelfChange: PropTypes.func.isRequired,
+    shelvesList: PropTypes.array.isRequired
 };
 
 export default Library;

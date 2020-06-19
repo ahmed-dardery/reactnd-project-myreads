@@ -3,7 +3,7 @@ import BookShelfChanger from "./BookShelfChanger";
 import PropTypes from 'prop-types';
 
 const BookBox = (props) => {
-    const {shelf, onShelfChange} = props;
+    const {shelf, onShelfChange, shelvesList} = props;
     const {title, authors} = props.book;
     const {imageLinks} = props.book;
     const thumbnail = imageLinks ? imageLinks.thumbnail : '';
@@ -12,7 +12,7 @@ const BookBox = (props) => {
         <div className="book">
             <div className="book-top">
                 <div className="book-cover" style={{width: 128, height: 200, 'backgroundImage': `url(${thumbnail})`}}/>
-                <BookShelfChanger selected={shelf || 'none'} onChange={onShelfChange}/>
+                <BookShelfChanger shelvesList={shelvesList} selected={shelf || 'none'} onChange={onShelfChange}/>
             </div>
             <div className="book-title">{title}</div>
             <div className="book-authors">{authors && authors.join(', ')}</div>
@@ -29,7 +29,8 @@ BookBox.propTypes = {
         imageLinks: PropTypes.shape({
             thumbnail: PropTypes.string.isRequired
         })
-    }).isRequired
+    }).isRequired,
+    shelvesList: PropTypes.array.isRequired
 };
 
 export default BookBox;

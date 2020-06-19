@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 
 class BookShelf extends Component {
     render() {
-        const {shelf, books, onBookShelfChange} = this.props;
+        const {shelf, books, onBookShelfChange, shelvesList} = this.props;
 
         return (
             <div className="bookshelf">
                 <h2 className="bookshelf-title">{shelf.shelfTitle}</h2>
                 <div className="bookshelf-books">
-                    <BookGrid onBookShelfChange={onBookShelfChange} shelf={shelf.shelfID}
+                    <BookGrid shelvesList = {shelvesList} onBookShelfChange={onBookShelfChange} shelf={shelf.shelfID}
                               books={books.filter(book => book.shelf === shelf.shelfID)}/>
                 </div>
             </div>
@@ -25,7 +25,8 @@ BookShelf.propTypes = {
         shelfTitle: PropTypes.string,
     }).isRequired,
     books: PropTypes.array.isRequired,
-    onBookShelfChange: PropTypes.func.isRequired
+    onBookShelfChange: PropTypes.func.isRequired,
+    shelvesList: PropTypes.array.isRequired,
 };
 
 export default BookShelf;

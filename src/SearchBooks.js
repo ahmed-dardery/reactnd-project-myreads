@@ -22,7 +22,7 @@ class SearchBooks extends Component {
     };
 
     render() {
-        const {shelves, onBookShelfChange} = this.props;
+        const {shelves, onBookShelfChange, shelvesList} = this.props;
 
         return (
             <div className="search-books">
@@ -34,7 +34,7 @@ class SearchBooks extends Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <BookGrid shelves={shelves} books={this.state.books} onBookShelfChange={onBookShelfChange}/>
+                    <BookGrid shelvesList ={shelvesList} shelves={shelves} books={this.state.books} onBookShelfChange={onBookShelfChange}/>
                 </div>
             </div>
         );
@@ -44,7 +44,9 @@ class SearchBooks extends Component {
 
 SearchBooks.propTypes = {
     shelves: PropTypes.object.isRequired,
-    onBookShelfChange: PropTypes.func.isRequired
+    onBookShelfChange: PropTypes.func.isRequired,
+    shelvesList: PropTypes.array.isRequired
+
 };
 
 export default SearchBooks;
