@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 const BookBox = (props) => {
     const {shelf, onShelfChange} = props;
     const {title, authors} = props.book;
-    const {thumbnail} = props.book.imageLinks;
+    const {imageLinks} = props.book;
+    const thumbnail = imageLinks ? imageLinks.thumbnail : '';
 
     return (
         <div className="book">
@@ -27,7 +28,7 @@ BookBox.propTypes = {
         authors: PropTypes.array,
         imageLinks: PropTypes.shape({
             thumbnail: PropTypes.string.isRequired
-        }).isRequired
+        })
     }).isRequired
 };
 

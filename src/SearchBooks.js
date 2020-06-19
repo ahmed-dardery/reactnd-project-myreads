@@ -13,12 +13,12 @@ class SearchBooks extends Component {
     onChange = (query) => {
         this.setState(() => ({query}));
         clearTimeout(this.queryTimeOut);
-        this.queryTimeOut = setTimeout(() => this.search(query), 500);
+        this.queryTimeOut = setTimeout(() => this.search(query.trim()), 750);
     };
     search = (query) => {
-        BooksAPI.search(query).then((ret) =>
+        query ? BooksAPI.search(query).then((ret) =>
             this.setState({books: ret.error ? [] : ret})
-        );
+        ) : this.setState({books: []})
     };
 
     render() {
