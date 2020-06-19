@@ -34,7 +34,7 @@ class SearchBooks extends Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <BookGrid shelvesList ={shelvesList} shelves={shelves} books={this.state.books} onBookShelfChange={onBookShelfChange}/>
+                    <BookGrid customEmptyMessage=" " shelvesList ={shelvesList} shelves={shelves} books={this.state.books} onBookShelfChange={onBookShelfChange}/>
                 </div>
             </div>
         );

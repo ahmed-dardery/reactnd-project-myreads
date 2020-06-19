@@ -18,11 +18,20 @@ class BooksApp extends React.Component {
             },
             {
                 shelfID: 'wantToRead',
-                shelfTitle: 'Want to Reading'
+                shelfTitle: 'Want to Read'
             },
             {
                 shelfID: 'read',
                 shelfTitle: 'Read'
+            },
+            /*{
+                shelfID: 'favorite',
+                shelfTitle: 'Favorites'
+            },*/
+            {
+                shelfID: 'none',
+                shelfTitle: 'None',
+                system: true,
             }
         ]
     };

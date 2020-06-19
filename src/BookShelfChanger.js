@@ -4,11 +4,13 @@ import PropTypes from "prop-types";
 class BookShelfChanger extends React.Component {
 
     render() {
-        const {selected, onChange, shelvesList} = this.props;
+        const {onChange, shelvesList} = this.props;
+        let {selected} = this.props;
+        selected = selected || 'none';
         const YES_MARK = '✔', NO_MARK = '　 ';
         return (
             <div className="book-shelf-changer">
-                <select value={selected || "none"}
+                <select value={selected}
                         onChange={(event) => onChange(event.target.value)}>
                     <option value="move" disabled>Move to...</option>
                     {
@@ -18,7 +20,6 @@ class BookShelfChanger extends React.Component {
                             </option>
                         )
                     }
-                    <option value="none">{`${NO_MARK} None`}</option>
                 </select>
             </div>
         );

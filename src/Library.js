@@ -14,7 +14,7 @@ class Library extends Component {
             </div>
             <div className="list-books-content">
                 <div>
-                    {shelvesList.map(shelf => <BookShelf shelvesList={shelvesList} key={shelf.shelfID} onBookShelfChange={onBookShelfChange}
+                    {shelvesList.map(shelf => !shelf.system && !shelf.hidden && <BookShelf shelvesList={shelvesList} key={shelf.shelfID} onBookShelfChange={onBookShelfChange}
                                                           books={books} shelf={shelf}/>)}
                 </div>
             </div>

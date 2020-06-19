@@ -132,6 +132,9 @@ button:active {
     justify-content: center;
     flex-wrap: wrap;
 }
+.books-grid-empty {
+    font-size: xx-large;
+}
 
 .books-grid li {
     padding: 10px 15px;
