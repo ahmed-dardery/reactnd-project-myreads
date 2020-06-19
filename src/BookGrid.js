@@ -3,10 +3,14 @@ import BookBox from "./BookBox";
 import PropTypes from "prop-types";
 
 const BookGrid = (props) => {
-    const {books, shelf, shelves, onBookShelfChange} = props;
+    const {shelf, shelves, onBookShelfChange} = props;
+
+    let SortedBooks = props.books || [];
+    SortedBooks.sort((a, b) => a.title.localeCompare(b.title));
+
     return (
         <ol className="books-grid">
-            {books && books.map(book =>
+            {SortedBooks && SortedBooks.map(book =>
                 <li key={book.id}>
                     <BookBox onShelfChange={(value) => onBookShelfChange(book, value)} shelf={shelf || shelves[book.id]}
                              book={book}/>
