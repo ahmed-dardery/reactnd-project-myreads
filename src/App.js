@@ -9,22 +9,28 @@ import SearchBooks from "./SearchBooks";
 
 class BooksApp extends React.Component {
     state = {
-        books: []
+        books: [],
+        shelves: []
     };
 
     componentDidMount() {
         BooksAPI.getAll().then((books) => {
-            console.log(books);
             this.setState({books})
         });
     }
 
     onBookShelfChange = (book, shelf) => {
-        BooksAPI.update(book, shelf).then(
-            () => this.setState(prevState => ({
-                books: prevState.books.map(v => v.id === book.id ? {...v, shelf} : v)
-            }))
-        );
+        book.shelf = shelf;
+
+        this.setState(prevState => {
+            let cur = prevState.books.find(v => v.id === book.id);
+            if (cur) {
+                cur.shelf = shelf;
+                return prevState;
+            } else
+                return {books: [...prevState.books, book]};
+        });
+        BooksAPI.update(book, shelf);
     };
 
     render() {
@@ -32,8 +38,15 @@ class BooksApp extends React.Component {
 
             <div className="app">
                 <Route exact path="/"
-                       render={() => <Library onBookShelfChange={this.onBookShelfChange} books={this.state.books}/>}/>
-                <Route path="/search" render={() => <SearchBooks onBookShelfChange={this.onBookShelfChange}/>}/>
+                       render={() =>
+                           <Library onBookShelfChange={this.onBookShelfChange} books={this.state.books}/>
+                       }/>
+                <Route path="/search"
+                       render={() =>
+                           <SearchBooks shelves={
+                               this.state.books.reduce((acc, cur) => ({...acc, [cur.id]: cur.shelf}), {})
+                           } onBookShelfChange={this.onBookShelfChange}/>
+                       }/>
             </div>
         )
     }
