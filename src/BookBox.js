@@ -5,7 +5,6 @@ const BookBox = (props) => {
     const {shelf, onShelfChange} = props;
     const {title, authors} = props.book;
     const {thumbnail} = props.book.imageLinks;
-    console.log(thumbnail);
 
     return (
         <div className="book">
@@ -14,7 +13,7 @@ const BookBox = (props) => {
                 <BookShelfChanger selected={shelf} onChange={onShelfChange}/>
             </div>
             <div className="book-title">{title}</div>
-            <div className="book-authors">{authors.join(', ')}</div>
+            <div className="book-authors">{authors&&authors.join(', ')}</div>
         </div>
     );
 };
