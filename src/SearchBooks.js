@@ -5,6 +5,8 @@ import BookGrid from "./BookGrid";
 class SearchBooks extends Component {
 
     render() {
+        const {onBookShelfChange} = this.props;
+
         return (
             <div className="search-books">
                 <div className="search-books-bar">
@@ -14,7 +16,7 @@ class SearchBooks extends Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <BookGrid/>
+                    <BookGrid onBookShelfChange={onBookShelfChange}/>
                 </div>
             </div>
         );

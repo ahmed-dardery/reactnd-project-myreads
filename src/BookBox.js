@@ -2,7 +2,7 @@ import React from 'react';
 import BookShelfChanger from "./BookShelfChanger";
 
 const BookBox = (props) => {
-    const {shelf} = props;
+    const {shelf, onShelfChange} = props;
     const {title, authors} = props.book;
     const {thumbnail} = props.book.imageLinks;
 
@@ -10,7 +10,7 @@ const BookBox = (props) => {
         <div className="book">
             <div className="book-top">
                 <div className="book-cover" style={{'backgroundImage': thumbnail}}/>
-                <BookShelfChanger selected={shelf}/>
+                <BookShelfChanger selected={shelf} onChange={onShelfChange}/>
             </div>
             <div className="book-title">{title}</div>
             <div className="book-authors">{authors.join(', ')}</div>

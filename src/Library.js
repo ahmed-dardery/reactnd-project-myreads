@@ -21,14 +21,14 @@ class Library extends Component {
     ];
 
     render() {
-        const {books} = this.props;
+        const {books, onBookShelfChange} = this.props;
         return (<div className="list-books">
             <div className="list-books-title">
                 <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
                 <div>
-                    {this.shelves.map(shelf => <BookShelf key={shelf.shelfID} books={books} shelf={shelf}/>)}
+                    {this.shelves.map(shelf => <BookShelf key={shelf.shelfID} onBookShelfChange={onBookShelfChange} books={books} shelf={shelf}/>)}
                 </div>
             </div>
             <div className="open-search">
