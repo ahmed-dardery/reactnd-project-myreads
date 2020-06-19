@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
 import BookShelf from "./BookShelf";
+import PropTypes from "prop-types";
 
 
 class Library extends Component {
@@ -28,7 +29,8 @@ class Library extends Component {
             </div>
             <div className="list-books-content">
                 <div>
-                    {this.shelves.map(shelf => <BookShelf key={shelf.shelfID} onBookShelfChange={onBookShelfChange} books={books} shelf={shelf}/>)}
+                    {this.shelves.map(shelf => <BookShelf key={shelf.shelfID} onBookShelfChange={onBookShelfChange}
+                                                          books={books} shelf={shelf}/>)}
                 </div>
             </div>
             <div className="open-search">
@@ -37,5 +39,10 @@ class Library extends Component {
         </div>);
     }
 }
+
+Library.propTypes = {
+    books: PropTypes.array.isRequired,
+    onBookShelfChange: PropTypes.func.isRequired
+};
 
 export default Library;

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 
 const BookShelfChanger = (props) => (
     <div className="book-shelf-changer">
@@ -11,5 +12,10 @@ const BookShelfChanger = (props) => (
         </select>
     </div>
 );
+
+BookShelfChanger.propTypes = {
+    selected: PropTypes.string,
+    onChange: PropTypes.func.isRequired
+};
 
 export default BookShelfChanger;

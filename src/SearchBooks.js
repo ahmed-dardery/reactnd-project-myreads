@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from "prop-types";
+
 import BookGrid from "./BookGrid";
 import * as BooksAPI from "./utils/BooksAPI";
 
@@ -39,5 +41,10 @@ class SearchBooks extends Component {
     }
 
 }
+
+SearchBooks.propTypes = {
+    shelves: PropTypes.object.isRequired,
+    onBookShelfChange: PropTypes.func.isRequired
+};
 
 export default SearchBooks;
