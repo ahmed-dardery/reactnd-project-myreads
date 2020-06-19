@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import BookGrid from "./BookGrid";
 
 class SearchBooks extends Component {
@@ -7,9 +8,7 @@ class SearchBooks extends Component {
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-
-                    <button className="close-search" onClick={() => this.setState({showSearchPage: false})}>Close
-                    </button>
+                    <Link to='/' className="close-search">Close</Link>
                     <div className="search-books-input-wrapper">
                         <input type="text" placeholder="Search by title or author"/>
                     </div>
