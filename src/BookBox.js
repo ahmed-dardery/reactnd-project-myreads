@@ -5,11 +5,12 @@ const BookBox = (props) => {
     const {shelf, onShelfChange} = props;
     const {title, authors} = props.book;
     const {thumbnail} = props.book.imageLinks;
+    console.log(thumbnail);
 
     return (
         <div className="book">
             <div className="book-top">
-                <div className="book-cover" style={{'backgroundImage': thumbnail}}/>
+                <div className="book-cover" style={{ width: 128, height: 200, 'backgroundImage': `url(${thumbnail})`}}/>
                 <BookShelfChanger selected={shelf} onChange={onShelfChange}/>
             </div>
             <div className="book-title">{title}</div>
