@@ -7,14 +7,14 @@ import PropTypes from "prop-types";
 
 class Library extends Component {
     render() {
-        const {books, onBookShelfChange, shelvesList} = this.props;
+        const {books, onBookShelfChange, shelvesList, loading} = this.props;
         return (<div className="list-books">
             <div className="list-books-title">
-                <h1>MyReads</h1>
+                <h1>My Reads</h1>
             </div>
             <div className="list-books-content">
                 <div>
-                    {shelvesList.map(shelf => !shelf.system && !shelf.hidden && <BookShelf shelvesList={shelvesList} key={shelf.shelfID} onBookShelfChange={onBookShelfChange}
+                    {shelvesList.map(shelf => !shelf.system && !shelf.hidden && <BookShelf loading={loading} shelvesList={shelvesList} key={shelf.shelfID} onBookShelfChange={onBookShelfChange}
                                                           books={books} shelf={shelf}/>)}
                 </div>
             </div>
@@ -28,7 +28,8 @@ class Library extends Component {
 Library.propTypes = {
     books: PropTypes.array.isRequired,
     onBookShelfChange: PropTypes.func.isRequired,
-    shelvesList: PropTypes.array.isRequired
+    shelvesList: PropTypes.array.isRequired,
+    loading: PropTypes.bool
 };
 
 export default Library;

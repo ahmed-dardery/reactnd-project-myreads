@@ -8,17 +8,18 @@ import * as BooksAPI from "./utils/BooksAPI";
 class SearchBooks extends Component {
     state = {
         query: '',
-        books: []
+        books: [],
+        loading: false
     };
     onChange = (query) => {
-        this.setState(() => ({query}));
+        this.setState(() => ({query, loading: true}));
         clearTimeout(this.queryTimeOut);
-        this.queryTimeOut = setTimeout(() => this.search(query.trim()), 750);
+        this.queryTimeOut = setTimeout(() => this.search(query.trim()), 500);
     };
     search = (query) => {
         query ? BooksAPI.search(query).then((ret) =>
-            this.setState({books: ret.error ? [] : ret})
-        ) : this.setState({books: []})
+            this.setState({books: ret.error ? [] : ret, loading: false})
+        ) : this.setState({books: [], loading: false})
     };
 
     render() {
@@ -34,7 +35,7 @@ class SearchBooks extends Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <BookGrid customEmptyMessage=" " shelvesList ={shelvesList} shelves={shelves} books={this.state.books} onBookShelfChange={onBookShelfChange}/>
+                    <BookGrid loading = {this.state.loading} customEmptyMessage={!this.state.loading && this.state.query.trim().length===0?" ":"No books found!"} shelvesList ={shelvesList} shelves={shelves} books={this.state.books} onBookShelfChange={onBookShelfChange}/>
                 </div>
             </div>
         );

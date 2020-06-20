@@ -9,6 +9,7 @@ import SearchBooks from "./SearchBooks";
 
 class BooksApp extends React.Component {
     state = {
+        loading: true,
         books: [],
         shelves: [],
         shelvesList: [
@@ -38,7 +39,7 @@ class BooksApp extends React.Component {
 
     componentDidMount() {
         BooksAPI.getAll().then((books) => {
-            this.setState({books})
+            this.setState({books, loading: false})
         });
     }
 
@@ -62,7 +63,7 @@ class BooksApp extends React.Component {
             <div className="app">
                 <Route exact path="/"
                        render={() =>
-                           <Library shelvesList={this.state.shelvesList} onBookShelfChange={this.onBookShelfChange} books={this.state.books}/>
+                           <Library loading={this.state.loading} shelvesList={this.state.shelvesList} onBookShelfChange={this.onBookShelfChange} books={this.state.books}/>
                        }/>
                 <Route path="/search"
                        render={() =>
