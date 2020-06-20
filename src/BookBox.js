@@ -6,7 +6,7 @@ const BookBox = (props) => {
     const {shelf, onShelfChange, shelvesList} = props;
     const {title, authors} = props.book;
     const {imageLinks} = props.book;
-    const thumbnail = imageLinks ? imageLinks.thumbnail : '';
+    const thumbnail = imageLinks ? imageLinks.thumbnail.replace('http://','https://') : '';
 
     return (
         <div className="book">
