@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 import * as BooksAPI from './utils/BooksAPI'
 
@@ -61,16 +61,20 @@ class BooksApp extends React.Component {
         return (
 
             <div className="app">
-                <Route exact path="/"
-                       render={() =>
-                           <Library loading={this.state.loading} shelvesList={this.state.shelvesList} onBookShelfChange={this.onBookShelfChange} books={this.state.books}/>
-                       }/>
-                <Route path="/search"
-                       render={() =>
-                           <SearchBooks shelvesList={this.state.shelvesList} shelves={
-                               this.state.books.reduce((acc, cur) => ({...acc, [cur.id]: cur.shelf}), {})
-                           } onBookShelfChange={this.onBookShelfChange}/>
-                       }/>
+                <Switch>
+                    <Route exact path="/"
+                           render={() =>
+                               <Library loading={this.state.loading} shelvesList={this.state.shelvesList}
+                                        onBookShelfChange={this.onBookShelfChange} books={this.state.books}/>
+                           }/>
+                    <Route path="/search"
+                           render={() =>
+                               <SearchBooks shelvesList={this.state.shelvesList} shelves={
+                                   this.state.books.reduce((acc, cur) => ({...acc, [cur.id]: cur.shelf}), {})
+                               } onBookShelfChange={this.onBookShelfChange}/>
+                           }/>
+                    <Route render={()=><div>404 Page Not Found!</div>}/>
+                </Switch>
             </div>
         )
     }
