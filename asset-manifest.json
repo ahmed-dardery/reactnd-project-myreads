@@ -1,14 +1,14 @@
 {
-  "main.css": "/reactnd-project-myreads/static/css/main.8215b1dd.chunk.css",
-  "main.js": "/reactnd-project-myreads/static/js/main.7c513900.chunk.js",
-  "main.js.map": "/reactnd-project-myreads/static/js/main.7c513900.chunk.js.map",
-  "static/js/1.dfa96a1c.chunk.js": "/reactnd-project-myreads/static/js/1.dfa96a1c.chunk.js",
-  "static/js/1.dfa96a1c.chunk.js.map": "/reactnd-project-myreads/static/js/1.dfa96a1c.chunk.js.map",
+  "main.css": "/reactnd-project-myreads/static/css/main.4af12d58.chunk.css",
+  "main.js": "/reactnd-project-myreads/static/js/main.f76db5e1.chunk.js",
+  "main.js.map": "/reactnd-project-myreads/static/js/main.f76db5e1.chunk.js.map",
+  "static/js/1.94152730.chunk.js": "/reactnd-project-myreads/static/js/1.94152730.chunk.js",
+  "static/js/1.94152730.chunk.js.map": "/reactnd-project-myreads/static/js/1.94152730.chunk.js.map",
   "runtime~main.js": "/reactnd-project-myreads/static/js/runtime~main.d2f8cf40.js",
   "runtime~main.js.map": "/reactnd-project-myreads/static/js/runtime~main.d2f8cf40.js.map",
-  "static/css/main.8215b1dd.chunk.css.map": "/reactnd-project-myreads/static/css/main.8215b1dd.chunk.css.map",
+  "static/css/main.4af12d58.chunk.css.map": "/reactnd-project-myreads/static/css/main.4af12d58.chunk.css.map",
   "static/media/App.css": "/reactnd-project-myreads/static/media/arrow-back.20e8847d.svg",
   "index.html": "/reactnd-project-myreads/index.html",
-  "precache-manifest.f5fa869124ed476489ee143402bd7e9e.js": "/reactnd-project-myreads/precache-manifest.f5fa869124ed476489ee143402bd7e9e.js",
+  "precache-manifest.3c8b6ed8fd2636cd6ad7114ae9076aec.js": "/reactnd-project-myreads/precache-manifest.3c8b6ed8fd2636cd6ad7114ae9076aec.js",
   "service-worker.js": "/reactnd-project-myreads/service-worker.js"
 }
