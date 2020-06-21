@@ -1,6 +1,7 @@
 import React from 'react';
 import BookShelfChanger from "./BookShelfChanger";
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
 const BookView = (props) => {
     const {shelf, onShelfChange, shelvesList} = props;
@@ -11,7 +12,7 @@ const BookView = (props) => {
     return (
         <div className="book">
             <div className="book-top">
-                <div className="book-cover" style={{width: 128, height: 200, 'backgroundImage': `url(${thumbnail})`}}/>
+                <Link to={{search: `?book=${props.book.id}`}}><div className="book-cover" style={{'backgroundImage': `url(${thumbnail})`}}/></Link>
                 <BookShelfChanger shelvesList={shelvesList} selected={shelf || 'none'} onChange={onShelfChange}/>
             </div>
             <div className="book-title">{title}</div>
@@ -24,6 +25,7 @@ BookView.propTypes = {
     shelf: PropTypes.string,
     onShelfChange: PropTypes.func.isRequired,
     book: PropTypes.shape({
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         authors: PropTypes.array,
         imageLinks: PropTypes.shape({

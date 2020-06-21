@@ -6,6 +6,7 @@ import * as BooksAPI from './utils/BooksAPI'
 
 import Library from "./Library";
 import SearchBooks from "./SearchBooks";
+import DetailedBookView from "./DetailedBookView";
 
 class BooksApp extends React.Component {
     state = {
@@ -61,20 +62,28 @@ class BooksApp extends React.Component {
         return (
 
             <div className="app">
+                <Route render={({history, location}) => {
+                    const test = new URLSearchParams(location.search);
+                    const query = test.get("book");
+                    return query && <DetailedBookView goBack={()=>history.push(location.pathname)} bookID={query}/>;
+                }}/>
                 <Switch>
                     <Route exact path="/"
-                           render={() =>
-                               <Library loading={this.state.loading} shelvesList={this.state.shelvesList}
+                           render={({location, history}) =>
+                               <Library history={history} query={location.search} loading={this.state.loading}
+                                        shelvesList={this.state.shelvesList}
                                         onBookShelfChange={this.onBookShelfChange} books={this.state.books}/>
-                           }/>
-                    <Route path="/search"
+                           }>
+                    </Route>
+                    <Route exact path="/search"
                            render={() =>
                                <SearchBooks shelvesList={this.state.shelvesList} shelves={
                                    this.state.books.reduce((acc, cur) => ({...acc, [cur.id]: cur.shelf}), {})
                                } onBookShelfChange={this.onBookShelfChange}/>
                            }/>
-                    <Route render={()=><div>404 Page Not Found!</div>}/>
+                    <Route render={() => <div>404 Page Not Found!</div>}/>
                 </Switch>
+
             </div>
         )
     }

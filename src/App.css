@@ -132,6 +132,7 @@ button:active {
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .books-grid-empty {
     font-size: xx-large;
 }
@@ -145,6 +146,7 @@ button:active {
     width: 140px;
 }
 
+.book-subtitle,
 .book-title,
 .book-authors {
     font-size: 0.8em;
@@ -160,9 +162,8 @@ button:active {
 
 .book-top {
     position: relative;
-    height: 200px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .book-shelf-changer {
@@ -172,10 +173,7 @@ button:active {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #60ac5d;
-    background-image: url('./icons/arrow-drop-down.svg');
-    background-repeat: no-repeat;
-    background-position: center;
+    background: #60ac5d url('./icons/arrow-drop-down.svg') no-repeat center;
     background-size: 20px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -191,11 +189,55 @@ button:active {
 
 .book-cover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    background: #eee;
+    background: #eee no-repeat center;
+    width: 128px;
+    height: 200px;
 }
 
 .book-cover-title {
     padding: 20px 10px 0;
     text-align: center;
     font-size: 0.8em;
+}
+
+/* book details */
+.book-details-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 30%;
+    z-index: 99;
+}
+
+.book-details-box {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.23);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    max-width: 90%; /*TODO: figure out why this property doesn't seem to work*/
+    max-height: 75%;
+    overflow-y: auto;
+    margin: auto auto;
+    border: #000 5px;
+    z-index: 100;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.book-details-info {
+    margin-left: 30px;
+}
+
+.book-details-top {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.book-details {
+    background-color: #fff;
+    position: relative;
+    padding: 20px;
 }
