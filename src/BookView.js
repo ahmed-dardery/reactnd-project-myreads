@@ -2,7 +2,7 @@ import React from 'react';
 import BookShelfChanger from "./BookShelfChanger";
 import PropTypes from 'prop-types';
 
-const BookBox = (props) => {
+const BookView = (props) => {
     const {shelf, onShelfChange, shelvesList} = props;
     const {title, authors} = props.book;
     const {imageLinks} = props.book;
@@ -20,7 +20,7 @@ const BookBox = (props) => {
     );
 };
 
-BookBox.propTypes = {
+BookView.propTypes = {
     shelf: PropTypes.string,
     onShelfChange: PropTypes.func.isRequired,
     book: PropTypes.shape({
@@ -33,4 +33,4 @@ BookBox.propTypes = {
     shelvesList: PropTypes.array.isRequired
 };
 
-export default BookBox;
+export default BookView;

@@ -1,5 +1,5 @@
 import React from 'react';
-import BookBox from "./BookBox";
+import BookView from "./BookView";
 import PropTypes from "prop-types";
 import LoadingIcon from "./LoadingIcon";
 
@@ -18,9 +18,9 @@ const BookGrid = (props) => {
                     <div className="books-grid-empty">{customEmptyMessage || `Phew, looks a bit too empty!`}</div> :
                     SortedBooks.map(book =>
                         <li key={book.id}>
-                            <BookBox shelvesList={shelvesList} onShelfChange={(value) => onBookShelfChange(book, value)}
-                                     shelf={shelf || shelves[book.id]}
-                                     book={book}/>
+                            <BookView shelvesList={shelvesList} onShelfChange={(value) => onBookShelfChange(book, value)}
+                                      shelf={shelf || shelves[book.id]}
+                                      book={book}/>
                         </li>
                     )}
             </ol>
